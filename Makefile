@@ -1,8 +1,5 @@
 build:
-	#docker-compose stop;docker rm nz01; docker rm dz01; docker rm pz01;docker-compose build --no-cache
-	#docker-compose stop;docker rm nz01; docker rm dz01; docker rm pz01;docker-compose build 
-	docker-compose stop;docker-compose build
-
+	docker-compose stop;docker rm 74apache; docker rm mysql8;docker-compose build --no-cache
 
 up:
 	docker-compose up -d
@@ -19,23 +16,15 @@ stop:
 restart:
 	docker-compose stop && docker-compose start
 
-shell-nginx:
-	docker exec -ti nz01 /bin/sh
 
 shell-web:
-	docker exec -ti dz01 /bin/sh
+	docker exec -ti 74apache /bin/sh
 
 shell-db:
 	docker exec -ti pz01 /bin/sh
-
-log-nginx:
-	docker-compose logs nginx
 
 log-web:
 	docker-compose logs web
 
 log-db:
 	docker-compose logs db
-
-collectstatic:
-	docker exec dz01 /bin/sh -c "python manage.py collectstatic --noinput"
