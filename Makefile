@@ -1,5 +1,5 @@
 build:
-	docker-compose stop;docker rm 74apache; docker rm mysql8;docker-compose build --no-cache
+	docker-compose stop;docker-compose build --no-cache
 
 up:
 	docker-compose up -d
@@ -16,12 +16,11 @@ stop:
 restart:
 	docker-compose stop && docker-compose start
 
-
 shell-web:
 	docker exec -ti 74apache /bin/sh
 
 shell-db:
-	docker exec -ti pz01 /bin/sh
+	docker exec -ti mysql8 /bin/sh
 
 log-web:
 	docker-compose logs web

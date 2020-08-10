@@ -11,6 +11,9 @@ services:
       - ./src:/var/www/html/
     ports:
       - 8000:80
+    networks:
+      - web_dev
+
   db:
     container_name: mysql8
     image: mysql:8.0
@@ -20,6 +23,11 @@ services:
       MYSQL_ROOT_PASSWORD: bace
       MYSQL_DATABASE: bace
       MYSQL_USER: root
-      MYSQL_PASSWORD: 1234
+      MYSQL_PASSWORD: bace
     ports:
       - 6033:3306
+    networks:
+      - web_dev
+networks:
+  web_dev:
+    driver: bridge
